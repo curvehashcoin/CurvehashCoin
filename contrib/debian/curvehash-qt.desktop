@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Curvehash
+Comment=Desktop allet for Curvehash Cryptocurrency
+Comment[de]=Offizieller Client für die Kryptowährung Curvehash
+Exec=curvehash-qt %u
+Terminal=false
+Type=Application
+Icon=/usr/share/pixmaps/curvehash128.png
+MimeType=x-scheme-handler/curvehash;
+Categories=Office;Finance;
+StartupWMClass=Curvehash-qt

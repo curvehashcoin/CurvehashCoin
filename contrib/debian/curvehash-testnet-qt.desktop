@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Curvehash (testnet)
+Comment=Desktop allet for Curvehash Cryptocurrency (testnet)
+Comment[de]=Offizieller Client für die Kryptowährung Curvehash (testnet)
+Exec=curvehash-qt -testnet %u
+Terminal=false
+Type=Application
+Icon=/usr/share/pixmaps/curvehash-testnet128.png
+MimeType=x-scheme-handler/curvehash;
+Categories=Application;Network;

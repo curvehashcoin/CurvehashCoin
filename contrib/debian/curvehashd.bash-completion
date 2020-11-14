@@ -1,0 +1,3 @@
+contrib/curvehashd.bash-completion	curvehashd
+contrib/curvehash-cli.bash-completion	curvehash-cli
+contrib/curvehash-tx.bash-completion	curvehash-tx

@@ -1,0 +1,11 @@
+usr/local/bin/curvehash-qt usr/bin
+share/pixmaps/curvehash16.png usr/share/pixmaps
+share/pixmaps/curvehash32.png usr/share/pixmaps
+share/pixmaps/curvehash128.png usr/share/pixmaps
+share/pixmaps/curvehash256.png usr/share/pixmaps
+share/pixmaps/curvehash-testnet32.png usr/share/pixmaps
+share/pixmaps/curvehash-testnet128.png usr/share/pixmaps
+share/pixmaps/curvehash-testnet256.png usr/share/pixmaps
+debian/curvehash-qt.desktop usr/share/applications
+debian/curvehash-testnet-qt.desktop usr/share/applications
+debian/curvehash-qt.protocol usr/share/kde4/services/
