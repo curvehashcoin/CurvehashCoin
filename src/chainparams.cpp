@@ -45,7 +45,7 @@ public:
         consensus.nCoinbaseMaturity = 100;
         consensus.nDgwPastBlocks = 30;
 
-        consensus.nStartMiningTime = 1605275431;
+        consensus.nStartMiningTime = 1605440641;
 
         consensus.fPowAllowMinDifficultyBlocks = false;
         consensus.fPowNoRetargeting = false;
@@ -68,21 +68,22 @@ public:
         vAlertPubKey = ParseHex("040797a85cafdf223783f0e31b7e3554b61f873efb0abaa6fa56632308ae2d7309a8afdf6c221a07f73fc288c7626f3cd97a6121241db0d60e0e375aaa87f4b9a2");
         nDefaultPort = 8383;
 
-        genesis = CreateGenesisBlock(1605275431, 600012725, 0x1e0fffff, 1, 0);
+        genesis = CreateGenesisBlock(1605440641, 128396, 0x1e0fffff, 1, 0);
         //genesis.hashMerkleRoot = uint256S("0x00");
         //consensus.hashGenesisBlock = uint256S("0x00");
         //MineGenesisBlock(genesis, consensus.powLimit);
         consensus.hashGenesisBlock = genesis.GetHash();
 
-        assert(consensus.hashGenesisBlock == uint256S("0x0883b0c3e935c24e59f071cf03f780b8056876b409133969e3bc98d5b096d7d2"));
-        assert(genesis.hashMerkleRoot == uint256S("0x5cd020549eb86e66654fbe141d6174e63bb90116c5eb6027c37e763c3778aeb0"));
+        assert(consensus.hashGenesisBlock == uint256S("0x19a8a53eaeb38a16b76bad30e70cdb228efafa791b5f2150c2a5934a431a1492"));
+
+        assert(genesis.hashMerkleRoot == uint256S("0x5443b97731232a13f0671d95ba0b3ba59389963d2be7127caf22dfbccdc23aa3"));
 
 
 
         // nodes with support for servicebits filtering should be at the top
-        vSeeds.emplace_back("178.238.231.71");
-        vSeeds.emplace_back("78.141.227.238");
-        vSeeds.emplace_back("173.249.39.245");
+        vSeeds.emplace_back("");
+        vSeeds.emplace_back("");
+        vSeeds.emplace_back("");
 
         base58Prefixes[PUBKEY_ADDRESS] = {0x42}; // T
         base58Prefixes[SCRIPT_ADDRESS] = {0x3c};
@@ -103,13 +104,13 @@ public:
 
         checkpointData = {
             {
-                {0, uint256S("0x0883b0c3e935c24e59f071cf03f780b8056876b409133969e3bc98d5b096d7d2")},
+                {0, uint256S("0x19a8a53eaeb38a16b76bad30e70cdb228efafa791b5f2150c2a5934a431a1492")},
             }
         };
 
         chainTxData = ChainTxData{
                 // Data as of block ???
-                1605275431, // * UNIX timestamp of last known number of transactions
+                1605440641, // * UNIX timestamp of last known number of transactions
                 0,     // * total number of transactions between genesis and that timestamp
                 //   (the tx=... number in the SetBestChain debug.log lines)
                 0 // * estimated number of transactions per second after that timestamp
@@ -141,7 +142,7 @@ public:
 
         consensus.fPowAllowMinDifficultyBlocks = false;
         consensus.fPowNoRetargeting = false;
-        consensus.nStartMiningTime = 1605275431;
+        consensus.nStartMiningTime = 1605440641;
 
         // The best chain should have at least this much work.
         consensus.nMinimumChainWork = uint256S("0x00");
@@ -156,15 +157,15 @@ public:
         nDefaultPort = 18383;
         vAlertPubKey = ParseHex("04bef9e37b5da8fb263aff719047b8d148875a4d343f8f093534f6be911b9e7d5b7b678507b24b4b4948f0b8a884da3afd38484a1b37ea33018e32c9bd79e19d9f");
 
-        genesis = CreateGenesisBlock(1605275431, 600003910, 0x1f00ffff, 1, 0);
-      //  consensus.hashGenesisBlock = uint256S("0x00");
+        genesis = CreateGenesisBlock(1605440641, 200008037, 0x1f00ffff, 1, 0);
+        //consensus.hashGenesisBlock = uint256S("0x00");
 
         //genesis.hashMerkleRoot = uint256S("0x00");
-      //  MineGenesisBlock(genesis, consensus.powLimit);
+        //MineGenesisBlock(genesis, consensus.powLimit);
         consensus.hashGenesisBlock = genesis.GetHash();
 
-        assert(consensus.hashGenesisBlock == uint256S("0xd325ec27e45ade24a6488b391c11fcb5a0fff72c712a8e24e8d8af0cf4778c9c"));
-        assert(genesis.hashMerkleRoot == uint256S("0x5cd020549eb86e66654fbe141d6174e63bb90116c5eb6027c37e763c3778aeb0"));
+        assert(consensus.hashGenesisBlock == uint256S("0xf035a8cda8f5aaf9592ffcab28c3c08a245fd236adb82432c242b4ad364b9d4e"));
+        assert(genesis.hashMerkleRoot == uint256S("0x5443b97731232a13f0671d95ba0b3ba59389963d2be7127caf22dfbccdc23aa3"));
 
         vFixedSeeds.clear();
         vSeeds.clear();
@@ -192,12 +193,12 @@ public:
 
         checkpointData = {
                 {
-                        {0, uint256S("0xd325ec27e45ade24a6488b391c11fcb5a0fff72c712a8e24e8d8af0cf4778c9c")},
+                        {0, uint256S("0xf035a8cda8f5aaf9592ffcab28c3c08a245fd236adb82432c242b4ad364b9d4e")},
             }
         };
 
         chainTxData = ChainTxData{
-                1605275431,
+                1605440641,
                 0,
                 0
         };
@@ -231,7 +232,7 @@ public:
 
         consensus.fPowAllowMinDifficultyBlocks = true;
         consensus.fPowNoRetargeting = true;
-        consensus.nStartMiningTime = 1605275431;
+        consensus.nStartMiningTime = 1605440641;
 
         // The best chain should have at least this much work.
         consensus.nMinimumChainWork = uint256S("0x00");
@@ -246,25 +247,25 @@ public:
         nDefaultPort = 8233;
         vAlertPubKey = ParseHex("04173a381c9a7c0bf2e8f5dd3c71d059b025b6fee42b92224af842bd40ba1c995d4e2e79d2fda539471ffb2cec48f45557c3f34d0269da3b6ae31eb7f48039b719");
 
-        genesis = CreateGenesisBlock(1605275431, 600003910, 0x1f00ffff, 1, 0);
-      //  consensus.hashGenesisBlock == uint256S("0x0");
-    //    genesis.hashMerkleRoot == uint256S("0x0");
-    //    MineGenesisBlock(genesis, consensus.powLimit);
+        genesis = CreateGenesisBlock(1605440641, 200008037, 0x1f00ffff, 1, 0);
+        //consensus.hashGenesisBlock == uint256S("0x0");
+        //genesis.hashMerkleRoot == uint256S("0x0");
+        //MineGenesisBlock(genesis, consensus.powLimit);
         consensus.hashGenesisBlock = genesis.GetHash();
-        assert(consensus.hashGenesisBlock == uint256S("0xd325ec27e45ade24a6488b391c11fcb5a0fff72c712a8e24e8d8af0cf4778c9c"));
-        assert(genesis.hashMerkleRoot == uint256S("0x5cd020549eb86e66654fbe141d6174e63bb90116c5eb6027c37e763c3778aeb0"));
+        assert(consensus.hashGenesisBlock == uint256S("0xf035a8cda8f5aaf9592ffcab28c3c08a245fd236adb82432c242b4ad364b9d4e"));
+        assert(genesis.hashMerkleRoot == uint256S("0x5443b97731232a13f0671d95ba0b3ba59389963d2be7127caf22dfbccdc23aa3"));
 
         vFixedSeeds.clear(); //!< Regtest mode doesn't have any fixed seeds.
         vSeeds.clear();      //!< Regtest mode doesn't have any DNS seeds.
 
         checkpointData = {
             {
-                {0, uint256S("0xd325ec27e45ade24a6488b391c11fcb5a0fff72c712a8e24e8d8af0cf4778c9c")},
+                {0, uint256S("0xf035a8cda8f5aaf9592ffcab28c3c08a245fd236adb82432c242b4ad364b9d4e")},
             }
         };
 
         chainTxData = ChainTxData{
-            1605275431,
+            1605440641,
             0,
             0
         };

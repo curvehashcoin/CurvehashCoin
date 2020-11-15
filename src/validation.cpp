@@ -977,7 +977,16 @@ bool ReadBlockFromDisk(CBlock& block, const CBlockIndex* pindex, const Consensus
 // curvehash: it depends on current POW Block Height, not current blockchain Height
 int64_t GetProofOfWorkReward(unsigned int nHeight) {
     const Consensus::Params &params = Params().GetConsensus();
-    return (nHeight == 0 ? 1369000 : 70) * COIN;  // Proof-of-work Reward
+    if(nHeight < 3)
+    {
+    return   1369000 * COIN;
+    }
+
+    else if(nHeight >= 3)  
+    {
+    return 70 * COIN;
+    }
+     // Proof-of-work Reward
 }
 // curvehash: miner's coin stake is rewarded based on coin age spent (coin-days)
 CAmount GetProofOfStakeReward(CAmount nCoinAge)
