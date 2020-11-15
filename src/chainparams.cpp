@@ -81,9 +81,9 @@ public:
 
 
         // nodes with support for servicebits filtering should be at the top
-        vSeeds.emplace_back("");
-        vSeeds.emplace_back("");
-        vSeeds.emplace_back("");
+        vSeeds.emplace_back("173.249.39.245");
+        vSeeds.emplace_back("78.141.227.238");
+        vSeeds.emplace_back("178.238.231.71");
 
         base58Prefixes[PUBKEY_ADDRESS] = {0x42}; // T
         base58Prefixes[SCRIPT_ADDRESS] = {0x3c};
