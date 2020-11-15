@@ -41,8 +41,8 @@ QString BitcoinUnits::longName(int unit)
     switch(unit)
     {
     case BTC: return QString("CURVE");
-    case mBTC: return QString("mOBV");
-    case uBTC: return QString::fromUtf8("μOBV");
+    case mBTC: return QString("mCURVE");
+    case uBTC: return QString::fromUtf8("μCURVE");
     default: return QString("???");
     }
 }
