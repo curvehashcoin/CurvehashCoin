@@ -5,17 +5,15 @@ Curvehash Official Development Repo
 [![Build Status](https://travis-ci.org/curvehash/curvehash.svg?branch=master)](https://travis-ci.org/curvehash/curvehash)
 
 ### What is Curvehash?
-[Curvehash](https://curvehash.net) (abbreviated CURVE), previously known as Curvehash, is the first [cryptocurrency](https://en.wikipedia.org/wiki/Cryptocurrency) design introducing [proof-of-stake consensus](https://curvehash.net/resources.html#whitepaper) as a security model, with a combined [proof-of-stake](https://curvehash.net/resources.html#whitepaper)/[proof-of-work](https://en.wikipedia.org/wiki/Proof-of-work_system) staking system. Curvehash is based on [Bitcoin](https://bitcoin.org), while introducing many important innovations to cryptocurrency field including new security model, energy efficiency, better staking model and more adaptive response to rapid change in network computation power.
+[Curvehash](https://curvehash.com) (abbreviated CURVE), previously known as Curvehash, is the first [cryptocurrency](https://en.wikipedia.org/wiki/Cryptocurrency) design introducing [proof-of-stake consensus](https://curvehash.net/resources.html#whitepaper) as a security model, with a combined [proof-of-stake](https://curvehash.net/resources.html#whitepaper)/[proof-of-work](https://en.wikipedia.org/wiki/Proof-of-work_system) staking system. Curvehash is based on [Bitcoin](https://bitcoin.org), while introducing many important innovations to cryptocurrency field including new security model, energy efficiency, better staking model and more adaptive response to rapid change in network computation power.
 
 ### Curvehash Resources
 * Client and Source:
-[Client Binaries](https://curvehash.net/wallet.html),
-[Source Code](https://github.com/curvehashcoin/curvehash)
+[Client Binaries](https://curvehash.com/wallet.html),
+[Source Code](https://github.com/curvehashcoin/curvehashcoin)
 * Documentation: [Curvehash Whitepaper](https://curvehash.net/resources.html#whitepaper),
-[Curvehash Wiki](https://github.com/curvehashcoin/curvehash/wiki)
-* Help: 
-[Forum](https://talk.curvehash.net),
-[Intro & Important Links](https://talk.curvehash.net/t/what-is-curvehash-intro-important-links/2889)
+[Curvehash Wiki](https://github.com/curvehashcoin/curvehashcoin/wiki)
+
 
 Testing
 -------
