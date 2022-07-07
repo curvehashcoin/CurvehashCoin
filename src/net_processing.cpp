@@ -2370,6 +2370,13 @@ bool static ProcessMessage(CNode* pfrom, const std::string& strCommand, CDataStr
         const CBlockIndex *pindex = nullptr;
         CValidationState state;
 
+        // workaround to fix invalid nFlags for PoS-Blocks
+        bool flagPoS = cmpctblock.header.nFlags & CBlockIndex::BLOCK_PROOF_OF_STAKE;
+        if (!flagPoS && (cmpctblock.header.nNonce == 0) && !CheckProofOfWork(&cmpctblock.header, chainparams.GetConsensus())) {
+        	flagPoS = CBlockIndex::BLOCK_PROOF_OF_STAKE;
+        	cmpctblock.header.nFlags |= CBlockIndex::BLOCK_PROOF_OF_STAKE;
+        }
+
         if (!ProcessNewBlockHeaders(nPoSTemperature, chainActive.Tip()->GetBlockHash(), {cmpctblock.header}, false, state, chainparams, &pindex)) {
             int nDoS;
             if (state.IsInvalid(nDoS)) {
@@ -2678,6 +2685,13 @@ bool static ProcessMessage(CNode* pfrom, const std::string& strCommand, CDataStr
             // note: at this point we don't know if PoW headers are valid - we just assume they are
             // so we need to update pfrom->nPoSTemperature once we actualy check them
             bool fPoS = headers[n].nFlags & CBlockIndex::BLOCK_PROOF_OF_STAKE;
+
+            // workaround to fix invalid nFlags for PoS
+            if (!fPoS && (headers[n].nNonce == 0) && !CheckProofOfWork(&headers[n], chainparams.GetConsensus())) {
+            	fPoS = CBlockIndex::BLOCK_PROOF_OF_STAKE;
+            	headers[n].nFlags |= CBlockIndex::BLOCK_PROOF_OF_STAKE;
+            }
+
             nTmpPoSTemperature += fPoS ? 1 : -POW_HEADER_COOLING;
             // peer cannot cool himself by PoW headers from other branches
             if (n == 0 && !fPoS && headers[n].hashPrevBlock != pfrom->lastAcceptedHeader)
