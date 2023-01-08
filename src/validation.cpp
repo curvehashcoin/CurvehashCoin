@@ -984,7 +984,7 @@ int64_t GetProofOfWorkReward(unsigned int nHeight) {
 
     else if(nHeight >= 3)  
     {
-    return 35 * COIN;
+    return 70 * COIN;
     }
      // Proof-of-work Reward
 }
