@@ -986,36 +986,7 @@ int64_t GetProofOfWorkReward(unsigned int nHeight) {
     {
     return 70 * COIN;
     }
-    else if(nHeight >= 539000)
-    {
-    return 35 * COIN;
-    }
-    else if(nHeight >= 540000)
-    {
-    return 17 * COIN;
-    }
-    else if(nHeight >= 550000)
-    {
-    return 8 * COIN;
-    }
-    else if(nHeight >= 560000)
-    {
-    return 4 * COIN;
-    }
-    else if(nHeight >= 570000)
-    {
-    return 2 * COIN;
-    }
-    else if(nHeight >= 580000)
-    {
-    return 1 * COIN;
-    }
-    else if(nHeight >= 590000)
-    {
-    return 0 * COIN;
-    }
      // Proof-of-work Reward
-
 }
 // curvehash: miner's coin stake is rewarded based on coin age spent (coin-days)
 CAmount GetProofOfStakeReward(CAmount nCoinAge)
@@ -1643,7 +1614,7 @@ bool CChainState::ConnectBlock(const CBlock& block, CValidationState& state, CBl
     int64_t nTimeStart = GetTimeMicros();
     if (!CurvehashContextualBlockChecks(block, state, pindex, fJustCheck))
         return error("%s: failed PoS check %s", __func__, FormatStateMessage(state));
-// END OF POW
+
   //  if (block.IsProofOfWork() && (pindex->nHeight > 0 && pindex->pprev->nPOWBlockHeight + 1 > params.nTotalPOWBlock))
     //    return state.DoS(100, error("ConnectBlock() : PoW period ended"),
       //                   REJECT_INVALID, "PoW-ended");
