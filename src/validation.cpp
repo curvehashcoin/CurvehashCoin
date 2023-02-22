@@ -981,10 +981,38 @@ int64_t GetProofOfWorkReward(unsigned int nHeight) {
     {
     return   1369000 * COIN;
     }
-
-    else if(nHeight >= 3)  
+    //2023 halving implementation
+    else if((nHeight >= 3) && (nHeight < 555000))
     {
     return 70 * COIN;
+    }
+    else if((nHeight >= 555000) && (nHeight < 560000))
+    {
+    return 35 * COIN;
+    }
+    else if((nHeight >= 560000) && (nHeight < 570000))
+    {
+    return 18 * COIN;
+    }
+    else if((nHeight >= 570000) && (nHeight < 585000))
+    {
+    return 9 * COIN;
+    }
+    else if((nHeight >= 585000) && (nHeight < 605000))
+    {
+    return 5 * COIN;
+    }
+    else if((nHeight >= 605000) && (nHeight < 630000))
+    {
+    return 3 * COIN;
+    }
+    else if((nHeight >= 630000) && (nHeight < 660000))
+    {
+    return 2 * COIN;
+    }
+    else if(nHeight >= 660000) 
+    {
+    return 1 * COIN;
     }
      // Proof-of-work Reward
 }
