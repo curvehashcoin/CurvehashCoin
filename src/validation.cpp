@@ -981,12 +981,48 @@ int64_t GetProofOfWorkReward(unsigned int nHeight) {
     {
     return   1369000 * COIN;
     }
-
-    else if(nHeight >= 3)  
+    
+    else if((nHeight >= 3) && (nHeight < 555000))
     {
     return 70 * COIN;
     }
-     // Proof-of-work Reward
+
+//2023 halving implementation table    
+    else if((nHeight >= 555000) && (nHeight < 560000))
+    {
+    return 35 * COIN; // 35 CURVE * 5000 blocks
+    }
+    
+    else if((nHeight >= 560000) && (nHeight < 570000))
+    {
+    return 25 * COIN; // 25 CURVE * 10000 blocks
+    }
+    
+    else if((nHeight >= 570000) && (nHeight < 585000))
+    {
+    return 15 * COIN; // 15 CURVE * 15000 blocks
+    }
+
+    else if((nHeight >= 585000) && (nHeight < 605000))
+    {
+    return 10 * COIN; // 10 CURVE * 20000 blocks
+    }
+    
+    else if((nHeight >= 605000) && (nHeight < 650000))    
+    {
+    return 5 * COIN; // 5 CURVE * 45000 blocks
+    }
+    
+    else if((nHeight >= 650000) && (nHeight < 700000))
+    {
+    return 3 * COIN; // 3 CURVE * 50000 blocks
+    }
+    
+    else if(nHeight >= 700000) 
+    {
+    return 1 * COIN;
+    }
+// Proof-of-work Reward
 }
 // curvehash: miner's coin stake is rewarded based on coin age spent (coin-days)
 CAmount GetProofOfStakeReward(CAmount nCoinAge)
