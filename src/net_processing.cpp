@@ -2370,6 +2370,13 @@ bool static ProcessMessage(CNode* pfrom, const std::string& strCommand, CDataStr
         const CBlockIndex *pindex = nullptr;
         CValidationState state;
 
+                // workaround to fix invalid nFlags for PoS-Blocks
+        bool flagPoS = cmpctblock.header.nFlags & CBlockIndex::BLOCK_PROOF_OF_STAKE;
+        if (!flagPoS && (cmpctblock.header.nNonce == 0) && !CheckProofOfWork(&cmpctblock.header, chainparams.GetConsensus())) {
+        	flagPoS = CBlockIndex::BLOCK_PROOF_OF_STAKE;
+        	cmpctblock.header.nFlags |= CBlockIndex::BLOCK_PROOF_OF_STAKE;
+        }
+        
         if (!ProcessNewBlockHeaders(nPoSTemperature, chainActive.Tip()->GetBlockHash(), {cmpctblock.header}, false, state, chainparams, &pindex)) {
             int nDoS;
             if (state.IsInvalid(nDoS)) {
@@ -2384,13 +2391,13 @@ bool static ProcessMessage(CNode* pfrom, const std::string& strCommand, CDataStr
             }
         }
 
-        if (nPoSTemperature >= MAX_CONSECUTIVE_POS_HEADERS) {
-            nPoSTemperature = (MAX_CONSECUTIVE_POS_HEADERS*3)/4;
-            if (Params().NetworkIDString() != "test") {
-                g_connman->Ban(pfrom->addr, BanReasonNodeMisbehaving, gArgs.GetArg("-bantime", 3600) * 7);
-                return error("too many consecutive pos headers");
-            }
-        }
+        //        if (nPoSTemperature >= MAX_CONSECUTIVE_POS_HEADERS) {
+//            nPoSTemperature = (MAX_CONSECUTIVE_POS_HEADERS*3)/4;
+//            if (Params().NetworkIDString() != "test") {
+//                g_connman->Ban(pfrom->addr, BanReasonNodeMisbehaving, gArgs.GetArg("-bantime", 3600) * 7);
+//                return error("too many consecutive pos headers");
+//            }
+//        }
 
         // When we succeed in decoding a block's txids from a cmpctblock
         // message we typically jump to the BLOCKTXN handling code, with a
@@ -2678,18 +2685,25 @@ bool static ProcessMessage(CNode* pfrom, const std::string& strCommand, CDataStr
             // note: at this point we don't know if PoW headers are valid - we just assume they are
             // so we need to update pfrom->nPoSTemperature once we actualy check them
             bool fPoS = headers[n].nFlags & CBlockIndex::BLOCK_PROOF_OF_STAKE;
+        
+            // workaround to fix invalid nFlags for PoS
+            if (!fPoS && (headers[n].nNonce == 0) && !CheckProofOfWork(&headers[n], chainparams.GetConsensus())) {
+            	fPoS = CBlockIndex::BLOCK_PROOF_OF_STAKE;
+            	headers[n].nFlags |= CBlockIndex::BLOCK_PROOF_OF_STAKE;
+            }
+            
             nTmpPoSTemperature += fPoS ? 1 : -POW_HEADER_COOLING;
             // peer cannot cool himself by PoW headers from other branches
             if (n == 0 && !fPoS && headers[n].hashPrevBlock != pfrom->lastAcceptedHeader)
                 nTmpPoSTemperature += POW_HEADER_COOLING;
             nTmpPoSTemperature = std::max(nTmpPoSTemperature, 0);
-            if (nTmpPoSTemperature >= MAX_CONSECUTIVE_POS_HEADERS) {
-                nPoSTemperature = (MAX_CONSECUTIVE_POS_HEADERS*3)/4;
-                if (Params().NetworkIDString() != "test") {
-                    g_connman->Ban(pfrom->addr, BanReasonNodeMisbehaving, gArgs.GetArg("-bantime", 3600) * 7);
-                    return error("too many consecutive pos headers");
-                }
-            }
+            //if (nTmpPoSTemperature >= MAX_CONSECUTIVE_POS_HEADERS) {
+            //    nPoSTemperature = (MAX_CONSECUTIVE_POS_HEADERS*3)/4;
+            //    if (Params().NetworkIDString() != "test") {
+            //        g_connman->Ban(pfrom->addr, BanReasonNodeMisbehaving, gArgs.GetArg("-bantime", 3600) * 7);
+            //        return error("too many consecutive pos headers");
+            //    }
+            //}
         }
         }
 
@@ -2721,13 +2735,13 @@ bool static ProcessMessage(CNode* pfrom, const std::string& strCommand, CDataStr
 
             if (!fRequested) {
                 int32_t& nPoSTemperature = mapPoSTemperature[pfrom->addr];
-                if (nPoSTemperature >= MAX_CONSECUTIVE_POS_HEADERS) {
-                    nPoSTemperature = (MAX_CONSECUTIVE_POS_HEADERS*3)/4;
-                    if (Params().NetworkIDString() != "test") {
-                        g_connman->Ban(pfrom->addr, BanReasonNodeMisbehaving, gArgs.GetArg("-bantime", 3600) * 7);
-                        return error("too many consecutive pos headers");
-                    }
-                }
+                //if (nPoSTemperature >= MAX_CONSECUTIVE_POS_HEADERS) {
+                //    nPoSTemperature = (MAX_CONSECUTIVE_POS_HEADERS*3)/4;
+                //    if (Params().NetworkIDString() != "test") {
+                //        g_connman->Ban(pfrom->addr, BanReasonNodeMisbehaving, gArgs.GetArg("-bantime", 3600) * 7);
+               //        return error("too many consecutive pos headers");
+                //    }
+               // }
 
                 if (pblock2->IsProofOfStake() && !IsInitialBlockDownload())
                     nPoSTemperature += 1;
